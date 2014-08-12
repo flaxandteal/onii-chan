@@ -15,3 +15,10 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+Route::resource('companies', 'CompaniesController');
+
+
+Route::resource('companies', 'CompaniesController');
+
+Route::resource('listings', 'ListingsController');
