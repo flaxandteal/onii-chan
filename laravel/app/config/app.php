@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
     'Cartalyst\Sentry\SentryServiceProvider',
     'Dollar\Generators\GeneratorsServiceProvider',
+    'Codesleeve\AssetPipeline\AssetPipelineServiceProvider',
 
 	),
 
