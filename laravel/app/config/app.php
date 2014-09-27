@@ -121,6 +121,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+    'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider',
 
 	),
 
@@ -162,6 +163,7 @@ return array(
 		'Crypt'           => 'Illuminate\Support\Facades\Crypt',
 		'DB'              => 'Illuminate\Support\Facades\DB',
 		'Eloquent'        => 'Illuminate\Database\Eloquent\Model',
+    'EntityManager'   => 'Mitch\LaravelDoctrine\EntityManagerFacade',
 		'Event'           => 'Illuminate\Support\Facades\Event',
 		'File'            => 'Illuminate\Support\Facades\File',
 		'Form'            => 'Illuminate\Support\Facades\Form',
