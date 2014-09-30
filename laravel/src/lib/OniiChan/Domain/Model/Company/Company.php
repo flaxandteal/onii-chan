@@ -1,17 +1,17 @@
 <?php namespace OniiChan\Domain\Model\Company;
 
 use OniiChan\Domain\HasEvents;
-use Doctrine\ORM\Mapping as ORM;
 use OniiChan\Domain\AggregateRoot;
-use Doctrine\Common\Collections\ArrayCollection;
 use OniiChan\Domain\Model\Company\Events\CompanyWasRegistered;
+use OniiChan\Domain\Model\Company\Events\TitleWasUpdated;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use Mitch\LaravelDoctrine\Traits\Timestamps;
 use Mitch\LaravelDoctrine\Traits\SoftDeletes;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="companies")
- * @ORM\entity(repositoryClass="OniiChan\Domain\Model\Company\CompanyRepository")
  * @ORM\HasLifeCycleCallbacks()
  */
 class Company implements AggregateRoot
@@ -21,7 +21,8 @@ class Company implements AggregateRoot
   use SoftDeletes;
 
   /**
-   * @ORM\Id @ORM\Column(type="string", unique=TRUE)
+   * @ORM\Id
+   * @ORM\Column(type="string")
    */
   private $id;
 
@@ -99,7 +100,7 @@ class Company implements AggregateRoot
   }
 
   /**
-   * Set the company's title
+   * Set the Company's title
    *
    * @param Title $title
    * @return void
@@ -107,6 +108,19 @@ class Company implements AggregateRoot
   private function setTitle(Title $title)
   {
     $this->title = $title->toString();
+  }
+
+  /**
+   * Update a Company's title
+   *
+   * @param Company $company
+   * @return void
+   */
+  public function updateTitle(Title $title)
+  {
+    $this->setTitle($title);
+
+    $this->record(new TitleWasUpdated($this));
   }
 
   /**

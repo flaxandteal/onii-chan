@@ -59,4 +59,15 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
     $this->assertInstanceOf('OniiChan\Domain\Model\Company\YearStarted', $company->yearStarted());
     $this->assertEquals(1, count($company->release()));
   }
+
+  /** @test */
+  public function should_update_title()
+  {
+    $company = Company::register($this->companyId, $this->title, $this->yearStarted);
+
+    $company->updateTitle(new Title("Flax & Teal Unlimited"));
+
+    $this->assertEquals("Flax & Teal Unlimited", $company->title()->toString());
+    $this->count(1, count($company->release()));
+  }
 }

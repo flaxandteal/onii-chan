@@ -1,18 +1,19 @@
 {
   "require": {
     "laravel/framework": "4.2.*",
-    "mitch/laravel-doctrine": "~0.3",
+    "mitch/laravel-doctrine": "~0.5",
     "heybigname/event-dispatcher": "~1.1",
     "rhumsaa/uuid": "~2.7",
     "beberlei/assert": "~2.0"
   },
   "require-dev": {
     "mockery/mockery": "~0.8",
+    "doctrine/data-fixtures": "~1.0",
     "phpunit/phpunit": "4.0"
   },
   "autoload": {
     "psr-4": {
-      "OniiChan\\": "src/lib"
+      "OniiChan\\": "src/lib/OniiChan"
     },
     "classmap": [
       "app/commands",
@@ -25,7 +26,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "OniiChan\\Test\\": "src/tests"
+      "OniiChan\\Tests\\": "src/tests/OniiChan/Tests"
     }
   },
   "scripts": {
