@@ -1,15 +1,15 @@
 <?php
 
 use Doctrine\ORM\EntityManagerInterface;
-use OniiChan\Domain\Model\Company\CompanyRepository;
+use OniiChan\Application\CompanyBus;
 
 class CompanyController extends Controller
 {
-  private $entityManager;
+  protected $commandBus;
 
-  public function __construct(CompanyRepository $companyRepository)
+  public function __construct(CommandBus $commandBus);
   {
-    $this->companyRepository = $companyRepository;
+    $this->commandBus = $companyRepository;
   }
 
   public function index()
@@ -22,7 +22,11 @@ class CompanyController extends Controller
 
   public function store()
   {
-    
+    $input = Input::only('title', 'yearStarted');
+
+    new RegisterCompanyCommand($input['title']. $input['yearStarted']);
+
+    $this->commandBus->execute($command);
   }
 
   public function show($id)

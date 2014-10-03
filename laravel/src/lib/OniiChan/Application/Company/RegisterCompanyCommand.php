@@ -1,8 +1,9 @@
 <?php namespace OniiChan\Application\Company;
 
+use OniiChan\Application\Company\Command;
 use OniiChan\Gettable;
 
-class RegisterCompanyCommand
+class RegisterCompanyCommand implements Command
 {
   use Gettable;
 

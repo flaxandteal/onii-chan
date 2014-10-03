@@ -5,3 +5,7 @@ composer.phar
 .env.php
 .DS_Store
 Thumbs.db
+.sass-cache
+node_modules
+
+public/css

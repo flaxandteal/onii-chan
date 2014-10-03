@@ -1,4 +1,4 @@
-<?php namespace OniiChan\Application\Company;
+<?php namespace OniiChan\Tests\Application\Company;
 
 use OniiChan\Application\Company\RegisterCompanyCommand;
 
