@@ -1,0 +1,66 @@
+$onii-blue: #304d5e;
+$endorsements-colours: (0: #4d7a95, 1: #800080, 2\+: #ff0000);
+$active-colour: #5aa02c;
+
+#company-matching-listings {
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 30px;
+	padding-left: 40px;
+	padding-right: 40px;
+	text-align: left;
+
+	#listings-background {
+		top: -30px;
+		left: -40px;
+		position: absolute;
+		z-index: -2;
+	}
+	#listings-count {
+		font-family: 'League Gothic';
+		text-transform: uppercase;
+		font-size: 220%;
+		color: $onii-blue;
+	}
+
+	#listings {
+		width: 450px;
+		display: table-row;
+
+		@each $quantity, $colour in $endorsements-colours {
+			.l-endorsements-#{$quantity} {
+				color: $colour;
+			}
+		}
+
+		.active {
+			color: white;
+			background-color: $active-colour;
+			margin-left: -32px;
+			padding-left: 2px;
+		}
+
+		ul {
+			list-style-type: none;
+			margin: 0px;
+			padding: 0px;
+			li {
+				text-transform: uppercase;
+				font-size: 150%;
+			}
+		}
+
+		#listings-list {
+			vertical-align: top;
+			display: table-cell;
+		}
+		#listings-arrows {
+			display: table-cell;
+			height: 300px;
+			img {
+				display: block;
+				margin: 5px 0px 10px 30px;
+			}
+		}
+	}
+}

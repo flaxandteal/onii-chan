@@ -1,0 +1,50 @@
+$nav-heading-colour: white;
+$nav-body-colour: #ddd;
+
+#footer {
+	margin-top: 50px;
+	background-image: url('../images/patterns/dark-sand.png');
+	text-align: center;
+	padding-bottom: 0px;
+	margin-bottom: 20px;
+
+	#footer-top-spacer {
+		width: 100%;
+		height: 15px;
+		background-color: #3c4a52;
+	}
+
+	#nav-menus {
+		display: inline-block;
+		text-align: left;
+
+		.nav-menu {
+			display: inline-block;
+			vertical-align: top;
+			padding-left: 25px;
+			padding-right: 25px;
+			padding-top: 10px;
+			h2 {
+				font-family: 'League Gothic';
+				text-transform: uppercase;
+				color: $nav-heading-colour;
+				margin: 0px;
+				font-size: 140%;
+			}
+			ul {
+				list-style-type: none;
+				padding-left: 0px;
+				font-size: 90%;
+				color: $nav-body-colour;
+				li {
+					display: block
+				}
+			}
+		}
+
+		.-highlighted.nav-menu ul li {
+			text-transform: uppercase;
+			color: white;
+		}
+	}
+}

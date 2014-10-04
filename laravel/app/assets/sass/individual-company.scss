@@ -1,0 +1,134 @@
+$button-colour: (#ff1d1d, #00ef05, #f5ac00);
+$company-header-colour: #5aa02c;
+$company-heading-colour: #828c92;
+
+#individual-company {
+  width: 600px;
+  display: inline-block;
+  vertical-align: top;
+
+  #individual-company-buttons {
+    margin-bottom: 20px;
+
+    @for $i from 1 through 3 {
+      #individual-company-button-#{$i} {
+        display: inline-block;
+
+        .icb-pair {
+          display: table-row;
+
+          div {
+            height: 50px;
+            vertical-align: middle;
+            display: table-cell;
+            text-transform: uppercase;
+            font-family: 'League Gothic';
+            font-size: 150%;
+          }
+          .icb-icon {
+            padding-left: 10px;
+          }
+          .icb-text {
+            color: nth($button-colour, $i);
+            padding-left: 5px;
+            padding-right: 10px;
+          }
+        }
+        .icb-underscore {
+          display: block;
+          height: 10px;
+          background-color: nth($button-colour, $i)
+        }
+      }
+    }
+  }
+
+  #company-box {
+    text-align: left;
+    width: 85%;
+    margin: 0 auto;
+    box-shadow: 0px 0px 5px #888;
+    background: white;
+
+    .-mild-highlighted {
+      font-weight: bold;
+    }
+
+    .company-header {
+      color: $company-header-colour;
+
+      .company-header-line {
+        font-family: 'League Gothic';
+        div {
+          display: inline-block;
+        }
+        .company-title {
+          position: relative;
+          top: 11px;
+          margin-left: 20px;
+          font-size: 230%;
+          text-transform: uppercase;
+        }
+        .company-endorsements {
+          font-size: 130%;
+          padding-left: 20px;
+        }
+      }
+
+      .company-link-bar {
+        position: relative;
+        height: 60px;
+        width: 100%;
+        background-color: $company-header-colour;
+        color: white;
+
+        .company-url {
+          font-size: 120%;
+          position: absolute;
+          left: 20px;
+          top: 0px;
+        }
+        .company-email {
+          font-size: 140%;
+          position: absolute;
+          right: 10px;
+          bottom: 0px;
+        }
+      }
+    }
+    .company-content {
+      .company-logo {
+        border: 2px $company-header-colour solid;
+        border-top: none;
+        border-left: none;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+      }
+      .company-blurb {
+        margin-top: 20px;
+        line-height: 140%;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+    .company-statistics {
+      .cs-main-row {
+        font-size: 120%;
+      }
+      thead {
+        color: $company-heading-colour;
+        font-size: 130%;
+        font-family: 'League Gothic';
+        text-transform: uppercase;
+        td {
+          padding-top: 10px;
+        }
+      }
+      td {
+        min-width: 100px;
+        padding-right: 10px;
+      }
+    }
+  }
+}

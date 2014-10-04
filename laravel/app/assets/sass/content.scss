@@ -1,0 +1,14 @@
+#content {
+	position: relative;
+
+	#content-container {
+		text-align: center;
+	}
+	#content-background {
+		position: absolute;
+		z-index: -3;
+		top: -50px;
+		right: 0px;
+		left: 0px;
+	}
+}

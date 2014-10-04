@@ -1,3 +1,17 @@
- body {
-   padding-top: 30px;
+body {
+	background: #eeeeee url('../images/background.png') no-repeat center top;
+        font-family: 'Quattrocento Sans', sans-serif;
+	font-size: 18px;
+}
+
+h1, h2 {
+   font-family: 'League Gothic';
+   font-weight: normal;
+   text-transform: uppercase;
+}
+
+#page-container {
+	width: 1100px;
+	text-align: center;
+	margin: 0 auto;
 }

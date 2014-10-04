@@ -1,0 +1,70 @@
+$onii-blue: #304d5e;
+
+#search-banner {
+	position: relative;
+
+	#search-banner-linen {
+		position: relative;
+		top: 5px;
+		opacity: 0.5;
+	}
+	#search-banner-box-group {
+		position: absolute;
+		z-index: 1;
+		left: 0px;
+		right: 0px;
+		top: 100px;
+		#search-banner-glass {
+			position:absolute;
+			right: 180px;
+			z-index: -1;
+			top: -30px;
+		}
+		#search-banner-title {
+			font-family: 'Chunkfive';
+			font-size: 270%;
+			text-transform: uppercase;
+		}
+		#search-banner-textbox {
+			position: relative;
+
+			#search-banner-textbox-label {
+				position: relative;
+				top: -50px;
+				left: 180px;
+				text-transform: uppercase;
+				font-family: 'League Gothic';
+				font-size: 200%;
+				color: rgba(180, 200, 200, 0.8);
+				z-index: -1;
+			}
+			input {
+				border: none;
+				border-left: thick black solid;
+				border-bottom: thick black solid;
+				height: 40px;
+				width: 450px;
+				background-color: rgba(180, 180, 235, 0.4);
+				font-size: 130%;
+				padding-left: 10px;
+			}
+		}
+	}
+	#search-filters {
+		text-align: left;
+
+		#search-filters-bar {
+			background-color: $onii-blue;
+			width: 100%;
+			&.sfb-inactive {
+				height: 10px;
+			}
+		}
+		#search-filters-activate {
+			font-family: 'League Gothic';
+			text-transform: uppercase;
+			font-size: 180%;
+			color: $onii-blue;
+		}
+	}
+}
