@@ -4,21 +4,23 @@ $onii-blue: #304d5e;
 	position: relative;
 
 	#search-banner-linen {
+		background-color: white;
 		position: relative;
-		top: 5px;
+		top: 4px;
 		opacity: 0.5;
+		z-index: -3;
 	}
 	#search-banner-box-group {
 		position: absolute;
 		z-index: 1;
 		left: 0px;
 		right: 0px;
-		top: 100px;
+		top: 80px;
 		#search-banner-glass {
 			position:absolute;
-			right: 180px;
+			right: 140px;
 			z-index: -1;
-			top: -30px;
+			top: -25px;
 		}
 		#search-banner-title {
 			font-family: 'Chunkfive';
@@ -30,8 +32,8 @@ $onii-blue: #304d5e;
 
 			#search-banner-textbox-label {
 				position: relative;
-				top: -50px;
-				left: 180px;
+				top: -40px;
+				left: 140px;
 				text-transform: uppercase;
 				font-family: 'League Gothic';
 				font-size: 200%;
@@ -42,11 +44,11 @@ $onii-blue: #304d5e;
 				border: none;
 				border-left: thick black solid;
 				border-bottom: thick black solid;
-				height: 40px;
-				width: 450px;
+				height: 30px;
+				width: 360px;
 				background-color: rgba(180, 180, 235, 0.4);
 				font-size: 130%;
-				padding-left: 10px;
+				padding-left: 8px;
 			}
 		}
 	}
@@ -57,7 +59,7 @@ $onii-blue: #304d5e;
 			background-color: $onii-blue;
 			width: 100%;
 			&.sfb-inactive {
-				height: 10px;
+				height: 8px;
 			}
 		}
 		#search-filters-activate {

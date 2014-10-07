@@ -1,6 +1,6 @@
 #top-menu {
 	position: relative;
-	top: 30px;
+	top: 25px;
 	color: white;
 	font-family: 'League Gothic';
 	font-weight: normal;
@@ -8,13 +8,13 @@
 
 	#logo {
 		position: absolute;
-		top: -20px;
-		left: 140px;
+		top: -15px;
+		left: 110px;
 		z-index: -2;
 	}
 
 	ul {
-		height: 20px;
+		height: 15px;
 		display: inline-block;
 		padding: 0px;
 		margin: 0px;
@@ -31,40 +31,40 @@
 		}
 		li.sep {
 			background-color: white;
-			width: 50px;
+			width: 40px;
 			padding-left: 0px;
 			padding-right: 0px;
-			height: 6px;
+			height: 5px;
 		}
 	}
 
 	#top-menu-upper {
 		position: absolute;
-		left: 530px;
-		top: 10px;
+		left: 442px;
+		top: 8px;
 		font-size: 140%;
-		ul li {
-			padding-left: 20px;
-			padding-right: 20px;
-		}
-	}
-
-	#top-menu-lower {
-		position: absolute;
-		left: 610px;
-		top: 45px;
-		font-size: 130%;
 		ul li {
 			padding-left: 15px;
 			padding-right: 15px;
 		}
 	}
 
+	#top-menu-lower {
+		position: absolute;
+		left: 500px;
+		top: 35px;
+		font-size: 130%;
+		ul li {
+			padding-left: 12px;
+			padding-right: 12px;
+		}
+	}
+
 	#top-menu-login {
 		position: absolute;
-		left: 1015px;
-		top: 45px;
-		font-size: 130%;
+		left: 835px;
+		top: 30px;
+		font-size: 180%;
 		color: pink;
 	}
 }
