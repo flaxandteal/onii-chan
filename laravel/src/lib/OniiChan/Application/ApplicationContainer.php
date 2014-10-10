@@ -1,4 +1,4 @@
-<?php namespace OniiChan\Application\Company;
+<?php namespace OniiChan\Application;
 
 use Illuminate\Foundation\Application;
 use OniiChan\Application\Container;

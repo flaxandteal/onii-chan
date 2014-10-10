@@ -1,6 +1,6 @@
-<?php namespace OniiChan\Application\Company;
+<?php namespace OniiChan\Application;
 
-use OniiChan\Application\Company\Command;
+use OniiChan\Application\Command;
 
 interface Handler
 {

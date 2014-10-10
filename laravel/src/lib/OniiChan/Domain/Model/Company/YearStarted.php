@@ -63,6 +63,6 @@ class YearStarted implements ValueObject
    */
   public function __toString()
   {
-    return (string)$this->value();
+    return (string)$this->value;
   }
 }

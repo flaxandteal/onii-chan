@@ -1,7 +1,7 @@
 <?php namespace OniiChan\Application\Company;
 
-use OniiChan\Application\Company\Command;
-use OniiChan\Application\Company\Handler;
+use OniiChan\Application\Command;
+use OniiChan\Application\Handler;
 use OniiChan\Domain\Services\Company\RegisterCompanyService;
 
 class RegisterCompanyCommandHandler implements Handler {

@@ -1,10 +1,11 @@
 $onii-blue: #304d5e;
+$reference: 1;
 
 #search-banner {
 	position: relative;
 
 	#search-banner-linen {
-		background-color: white;
+		text-align: center;
 		position: relative;
 		top: 4px;
 		opacity: 0.5;
@@ -15,16 +16,16 @@ $onii-blue: #304d5e;
 		z-index: 1;
 		left: 0px;
 		right: 0px;
-		top: 80px;
+		top: 70px / $reference;
 		#search-banner-glass {
 			position:absolute;
-			right: 140px;
+			right: (180px / $reference);
 			z-index: -1;
-			top: -25px;
+			top: (-15px / $reference);
 		}
 		#search-banner-title {
 			font-family: 'Chunkfive';
-			font-size: 270%;
+			font-size: 280%;
 			text-transform: uppercase;
 		}
 		#search-banner-textbox {
@@ -32,8 +33,8 @@ $onii-blue: #304d5e;
 
 			#search-banner-textbox-label {
 				position: relative;
-				top: -40px;
-				left: 140px;
+				top: -35px / $reference;
+				left: 100px / $reference;
 				text-transform: uppercase;
 				font-family: 'League Gothic';
 				font-size: 200%;
@@ -42,10 +43,10 @@ $onii-blue: #304d5e;
 			}
 			input {
 				border: none;
-				border-left: thick black solid;
-				border-bottom: thick black solid;
+				border-left: 5px/$reference black solid;
+				border-bottom: 5px/$reference black solid;
 				height: 30px;
-				width: 360px;
+				width: 270px / $reference;
 				background-color: rgba(180, 180, 235, 0.4);
 				font-size: 130%;
 				padding-left: 8px;

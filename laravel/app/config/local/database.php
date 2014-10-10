@@ -23,7 +23,7 @@ return array(
 
     'sqlite' => array(
       'driver' => 'sqlite',
-      'database' => ':memory:',
+			'database' => 'local',
       'prefix' => ''
     )
 

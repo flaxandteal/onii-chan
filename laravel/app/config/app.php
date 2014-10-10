@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -122,7 +122,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
     'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider',
-    'OniiChan\Infrastructure\Services\CompanyServiceProvider'
+    'OniiChan\Infrastructure\Services\CompanyServiceProvider',
+    'OniiChan\Application\CommandServiceProvider'
 
 	),
 

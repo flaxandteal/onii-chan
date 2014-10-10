@@ -1,7 +1,9 @@
+$reference: 1;
+
 body {
 	background: #eeeeee url('../images/background.png') no-repeat center top;
         font-family: 'Quattrocento Sans', sans-serif;
-	font-size: 14px;
+	font-size: 12px / $reference;
 }
 
 h1, h2 {
@@ -11,7 +13,7 @@ h1, h2 {
 }
 
 #page-container {
-	width: 900px;
+	width: 840px / $reference;
 	text-align: center;
 	margin: 0 auto;
 }

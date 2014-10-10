@@ -66,9 +66,9 @@ class CompanyDoctrineORMRepository implements CompanyRepository
   }
 
   /**
-   * Find a company by its title
+   * Find a Company by its title
    *
-   * @param Company $company
+   * @param Title $title
    * @return Company
    */
   public function companyOfTitle(Title $title)
@@ -76,5 +76,28 @@ class CompanyDoctrineORMRepository implements CompanyRepository
     return $this->em->getRepository($this->class)->findOneBy([
       'title' => $title->toString()
     ]);
+  }
+
+  /**
+   * Find a Company by its ID
+   *
+   * @param CompanyId $id
+   * @return Company
+   */
+  public function companyOfId(CompanyId $id)
+  {
+    return $this->em->getRepository($this->class)->findOneBy([
+      'id' => $id->toString()
+    ]);
+  }
+
+  /**
+   * Find all companies
+   *
+   * @return array(Company)
+   */
+  public function findAll()
+  {
+    return $this->em->getRepository($this->class)->findAll();
   }
 }

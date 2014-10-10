@@ -26,10 +26,25 @@ interface CompanyRepository
   public function update(Company $company);
 
   /**
-   * Find a company by their title
+   * Find a Company by its title
    *
    * @param Title $title
    * @return Company
    */
   public function companyOfTitle(Title $title);
+
+  /**
+   * Find a Company by its ID
+   *
+   * @param CompanyId $id
+   * @return Company
+   */
+  public function companyOfId(CompanyId $id);
+
+  /**
+   * Find all companies
+   *
+   * @return array(Company)
+   */
+  public function findAll();
 }

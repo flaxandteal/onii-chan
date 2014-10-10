@@ -52,7 +52,21 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
   {
     $this->executor->execute($this->loader->getFixtures());
 
-    $company = $company = $this->repository->companyOfTitle(new Title("Flax & Teal Limited"));
+    $company = $this->repository->companyOfTitle(new Title("Flax & Teal Limited"));
+
+    $this->assertInstanceOf('OniiChan\Domain\Model\Company\Company', $company);
+  }
+
+  /** @test */
+  public function should_find_company_by_id()
+  {
+    $this->executor->execute($this->loader->getFixtures());
+
+    $companies = $this->repository->findAll();
+    $this->assertTrue(count($companies) > 0);
+    $company_id = (string)$companies[0]->id();
+
+    $company = $this->repository->companyOfId(CompanyId::fromString($company_id));
 
     $this->assertInstanceOf('OniiChan\Domain\Model\Company\Company', $company);
   }
@@ -91,5 +105,16 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
     $company = $this->repository->companyOfTitle(new Title("Flax & Teal Unlimited"));
 
     $this->assertInstanceOf("OniiChan\Domain\Model\Company\Company", $company);
+  }
+
+  /** @test */
+  public function should_find_all_companies()
+  {
+    $this->executor->execute($this->loader->getFixtures());
+
+    $companies = $this->repository->findAll();
+
+    $this->assertTrue(count($companies) > 1);
+    $this->assertInstanceOf("OniiChan\Domain\Model\Company\Company", $companies[0]);
   }
 }

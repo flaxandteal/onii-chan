@@ -1,7 +1,7 @@
 {
   "require": {
     "laravel/framework": "4.2.*",
-    "mitch/laravel-doctrine": "~0.5",
+    "mitchellvanw/laravel-doctrine": "dev-master",
     "heybigname/event-dispatcher": "~1.1",
     "rhumsaa/uuid": "~2.7",
     "beberlei/assert": "~2.0"

@@ -1,21 +1,26 @@
-<?php namespace OniiChan\Tests\Infrastructure\Repositories\Fixtures;
+<?php
 
 use OniiChan\Domain\Model\Company\Company;
 use OniiChan\Domain\Model\Company\CompanyId;
 use OniiChan\Domain\Model\Company\Title;
 use OniiChan\Domain\Model\Company\YearStarted;
-use Doctrine\Common\Persistence\ObjectManager;
-use Doctrine\Common\DataFixtures\FixtureInterface;
+use OniiChan\Domain\Model\Company\CompanyRepository;
 
-class CompanyFixtures implements FixtureInterface
-{
+class CompanyTableSeeder extends Seeder {
+
   /**
-   * Load the Company fixtures
+   * Repository for Company data
    *
-   * @param ObjectManager $manager
-   * @return void
+   * @var CompanyRepository
    */
-  public function load(ObjectManager $manager)
+  private $companyRepository;
+
+  function __construct(CompanyRepository $companyRepository)
+  {
+    $this->companyRepository = $companyRepository;
+  }
+
+  public function run()
   {
     $samples = array(
       array("title" => "I K Flank", "yearStarted" => 2007),
@@ -49,11 +54,8 @@ class CompanyFixtures implements FixtureInterface
       $title = new Title($varlist["title"]);
       $yearStarted = new YearStarted($varlist["yearStarted"]);
 
-      $company = Company::register($id, $title, $yearStarted);
-
-      $manager->persist($company);
+      $this->companyRepository->add(Company::register($id, $title, $yearStarted));
     }
-
-    $manager->flush();
   }
+
 }

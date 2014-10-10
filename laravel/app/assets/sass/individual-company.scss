@@ -1,9 +1,10 @@
 $button-colour: (#ff1d1d, #00ef05, #f5ac00);
 $company-header-colour: #5aa02c;
 $company-heading-colour: #828c92;
+$reference: 1;
 
 #individual-company {
-  width: 500px;
+  width: 50%;
   display: inline-block;
   vertical-align: top;
 
@@ -77,7 +78,7 @@ $company-heading-colour: #828c92;
 
       .company-link-bar {
         position: relative;
-        height: 50px;
+        height: (50px / $reference);
         width: 100%;
         background-color: $company-header-colour;
         color: white;

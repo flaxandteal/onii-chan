@@ -1,7 +1,7 @@
-<?php namespace OniiChan\Tests\Application\Company;
+<?php namespace OniiChan\Tests;
 
 use Mockery as m;
-use OniiChan\Application\Company\ApplicationContainer;
+use OniiChan\Application\ApplicationContainer;
 use OniiChan\Application\Company\RegisterCompanyCommandHandler;
 
 class ApplicationContainerTest extends \PHPUnit_Framework_TestCase
