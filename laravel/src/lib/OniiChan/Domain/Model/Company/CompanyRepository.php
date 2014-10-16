@@ -47,4 +47,12 @@ interface CompanyRepository
    * @return array(Company)
    */
   public function findAll();
+
+  /**
+   * Find companies whose title contains a search-string
+   *
+   * @param string $substring
+   * @return array(Company)
+   */
+  public function companiesByTitleSubstring($substring);
 }

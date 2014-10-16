@@ -100,4 +100,20 @@ class CompanyDoctrineORMRepository implements CompanyRepository
   {
     return $this->em->getRepository($this->class)->findAll();
   }
+
+  /**
+   * Find companies whose title contains a search-string
+   *
+   * @param string $substring
+   * @return array(Company)
+   */
+  public function companiesByTitleSubstring($substring)
+  {
+    $queryBuilder = $this->em->getRepository($this->class)->createQueryBuilder('c');
+    $query = $queryBuilder
+      ->where('c.title LIKE :substring')
+      ->setParameter('substring', '%' . $substring . '%');
+
+    return $query->getQuery()->getResult();
+  }
 }

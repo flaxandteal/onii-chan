@@ -24,7 +24,6 @@ $active-colour: #5aa02c;
 	}
 
 	#listings {
-		width: 450px;
 		display: table-row;
 
 		@each $quantity, $colour in $endorsements-colours {
@@ -44,9 +43,12 @@ $active-colour: #5aa02c;
 			list-style-type: none;
 			margin: 0px;
 			padding: 0px;
+			overflow: hidden;
+			width: 280px;
 			li {
 				text-transform: uppercase;
 				font-size: 150%;
+				white-space: nowrap;
 			}
 		}
 

@@ -94,7 +94,7 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
   {
     $this->executor->execute($this->loader->getFixtures());
 
-    $company = $company = $this->repository->companyOfTitle(new Title("Flax & Teal Limited"));
+    $company = $this->repository->companyOfTitle(new Title("Flax & Teal Limited"));
 
     $company->updateTitle(new Title("Flax & Teal Unlimited"));
 
@@ -115,6 +115,17 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
     $companies = $this->repository->findAll();
 
     $this->assertTrue(count($companies) > 1);
+    $this->assertInstanceOf("OniiChan\Domain\Model\Company\Company", $companies[0]);
+  }
+
+  /** @test */
+  public function should_find_companies_by_title_substring()
+  {
+    $this->executor->execute($this->loader->getFixtures());
+
+    $companies = $this->repository->companiesByTitleSubstring("imited");
+
+    $this->assertTrue(count($companies) == 3);
     $this->assertInstanceOf("OniiChan\Domain\Model\Company\Company", $companies[0]);
   }
 }

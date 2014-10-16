@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/browse', function()
+{
+	return View::make('listings.browse');
+});
+
 Route::get('/', function()
 {
 	return View::make('listings.index');

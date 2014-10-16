@@ -17,9 +17,21 @@ class CompanyController extends Controller
 
   public function index()
   {
-    $companies = $this->companyRepository->findAll();
+    if (empty(Input::get('query')))
+    {
+      $companies = $this->companyRepository->findAll();
+    }
+    else
+    {
+      $companies = $this->companyRepository->companiesByTitleSubstring(Input::get('query'));
+    }
 
-    return View::make('companies.index')->with('companies', $companies);
+    $html = View::make('companies.index')->with('companies', $companies)->render();
+
+    return Response::json(array(
+      "count" => count($companies),
+      "html" => $html
+    ));
   }
 
   public function create()
