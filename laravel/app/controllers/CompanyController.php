@@ -17,19 +17,28 @@ class CompanyController extends Controller
 
   public function index()
   {
+    $offset = Input::get('offset');
+    $limit = Input::get('limit');
+
     if (empty(Input::get('query')))
     {
-      $companies = $this->companyRepository->findAll();
+      $companies = $this->companyRepository->findAll($limit);
     }
     else
     {
-      $companies = $this->companyRepository->companiesByTitleSubstring(Input::get('query'));
+      $companies = $this->companyRepository->companiesByTitleSubstring(Input::get('query'), (int)$limit, (int)$offset);
     }
+
+    $count = count($companies);
+
+    $displayLimit = Config::get('onii.company_count_display_limit');
+    if ($displayLimit)
+      $companies = array_slice($companies, 0, $displayLimit);
 
     $html = View::make('companies.index')->with('companies', $companies)->render();
 
     return Response::json(array(
-      "count" => count($companies),
+      "count" => $count,
       "html" => $html
     ));
   }

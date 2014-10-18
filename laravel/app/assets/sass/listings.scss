@@ -10,6 +10,10 @@ $active-colour: #5aa02c;
 	padding-right: 40px;
 	text-align: left;
 
+	a:link {
+		text-decoration: none;
+	}
+
 	#listings-background {
 		top: -30px;
 		left: -40px;
@@ -59,6 +63,7 @@ $active-colour: #5aa02c;
 		#listings-arrows {
 			display: table-cell;
 			height: 300px;
+			cursor: pointer;
 			img {
 				display: block;
 				margin: 5px 0px 10px 30px;

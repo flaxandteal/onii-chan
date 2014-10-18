@@ -25,8 +25,28 @@ class RegisterCompanyCommandHandler implements Handler {
    */
   public function handle(Command $command)
   {
-    $title = $command->title;
-    $yearStarted = $command->yearStarted;
-    $this->registerCompanyService->register($title, $yearStarted);
+    $title        = $command->title();
+    $yearStarted  = $command->yearStarted();
+    $url          = $command->url();
+    $email        = $command->email();
+    $location     = $command->location();
+    $size         = $command->size();
+    $interestedIn = $command->interestedIn();
+    $experience   = $command->experience();
+    $technologies = $command->technologies();
+    $vacancies    = $command->vacancies();
+
+    $this->registerCompanyService->register(
+      $title,
+      $yearStarted,
+      $url,
+      $email,
+      $location,
+      $size,
+      $interestedIn,
+      $experience,
+      $technologies,
+      $vacancies
+    );
   }
 }

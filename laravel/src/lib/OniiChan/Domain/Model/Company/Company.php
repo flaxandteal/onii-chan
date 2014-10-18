@@ -37,18 +37,77 @@ class Company implements AggregateRoot
   private $yearStarted;
 
   /**
+   * @ORM\Column(type="string")
+   */
+  private $url;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  private $email;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  private $location;
+
+  /**
+   * @ORM\Column(type="integer")
+   */
+  private $size;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  private $interestedIn;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  private $experience;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  private $technologies;
+
+  /**
+   * @ORM\Column(type="string")
+   */
+  private $vacancies;
+
+  /**
    * Create a new company
    *
    * @param CompanyId $companyId
    * @param Title $title
    * @param YearStarted $yearStarted
+   * @param Url $url
+   * @param Email $email
+   * @param Location $location
+   * @param Size $size
+   * @param InterestedIn $interestedIn
+   * @param Experience $experience
+   * @param Technologies $technologies
+   * @param Vacancies $vacancies
    * @return void
    */
-  private function __construct(CompanyId $companyId, Title $title, YearStarted $yearStarted)
+  private function __construct(CompanyId $companyId, Title $title, YearStarted $yearStarted,
+    Url $url, Email $email, Location $location, Size $size, InterestedIn $interestedIn,
+    Experience $experience, Technologies $technologies, Vacancies $vacancies)
   {
+
     $this->setId($companyId);
     $this->setTitle($title);
     $this->setYearStarted($yearStarted);
+    $this->setUrl($url);
+    $this->setEmail($email);
+    $this->setLocation($location);
+    $this->setSize($size);
+    $this->setInterestedIn($interestedIn);
+    $this->setExperience($experience);
+    $this->setTechnologies($technologies);
+    $this->setVacancies($vacancies);
 
     $this->record(new CompanyWasRegistered($this));
   }
@@ -61,9 +120,13 @@ class Company implements AggregateRoot
    * @param YearStarted $yearStarted
    * @return Company
    */
-  public static function register(CompanyId $companyId, Title $title, YearStarted $yearStarted)
+  public static function register(CompanyId $companyId, Title $title, YearStarted $yearStarted,
+    Url $url, Email $email, Location $location, Size $size, InterestedIn $interestedIn,
+    Experience $experience, Technologies $technologies, Vacancies $vacancies)
   {
-    $company = new Company($companyId, $title, $yearStarted);
+    $company = new Company($companyId, $title, $yearStarted,
+                           $url, $email, $location, $size, $interestedIn, 
+                           $experience, $technologies, $vacancies);
 
     return $company;
   }
@@ -142,5 +205,173 @@ class Company implements AggregateRoot
   private function setYearStarted(YearStarted $yearStarted)
   {
     $this->yearStarted = $yearStarted->toInteger();
+  }
+
+  /**
+   * Get the Company's URL
+   *
+   * @return Url
+   */
+  public function url()
+  {
+    return Url::fromNative($this->url);
+  }
+
+  /**
+   * Set the Company's URL
+   *
+   * @param Url $url
+   * @return void
+   */
+  private function setUrl(Url $url)
+  {
+    $this->url = $url->toString();
+  }
+
+  /**
+   * Get the Company's email
+   *
+   * @return Email
+   */
+  public function email()
+  {
+    return Email::fromNative($this->email);
+  }
+
+  /**
+   * Set the Company's email
+   *
+   * @param Email $email
+   * @return void
+   */
+  private function setEmail(Email $email)
+  {
+    $this->email = $email->toString();
+  }
+
+  /**
+   * Get the Company's location
+   *
+   * @return Location
+   */
+  public function location()
+  {
+    return Location::fromNative($this->location);
+  }
+
+  /**
+   * Set the Company's Location
+   *
+   * @param Location $location
+   * @return void
+   */
+  private function setLocation(Location $location)
+  {
+    $this->location = $location->toString();
+  }
+
+  /**
+   * Get the Company's size
+   *
+   * @return Size
+   */
+  public function size()
+  {
+    return Size::fromNative($this->size);
+  }
+
+  /**
+   * Set the Company's size
+   *
+   * @param Size $size
+   * @return void
+   */
+  private function setSize(Size $size)
+  {
+    $this->size = $size->toInteger();
+  }
+
+  /**
+   * Get the Company's interested in
+   *
+   * @return InterestedIn $interestedIn
+   */
+  public function interestedIn()
+  {
+    return InterestedIn::fromNative($this->interestedIn);
+  }
+
+  /**
+   * Set the Company's interested in
+   *
+   * @param InterestedIn $interestedIn
+   * @return void
+   */
+  private function setInterestedIn(InterestedIn $interestedIn)
+  {
+    $this->interestedIn = $interestedIn->toString();
+  }
+
+  /**
+   * Get the Company's experience
+   *
+   * @return Experience
+   */
+  public function experience()
+  {
+    return Experience::fromNative($this->experience);
+  }
+
+  /**
+   * Set the Company's experience
+   *
+   * @param Experience $experience
+   * @return void
+   */
+  private function setExperience(Experience $experience)
+  {
+    $this->experience = $experience->toString();
+  }
+
+  /**
+   * Get the Company's technologies
+   *
+   * @return Technologies
+   */
+  public function technologies()
+  {
+    return Technologies::fromNative($this->technologies);
+  }
+
+  /**
+   * Set the Company's technologies
+   *
+   * @param Technologies $technologies
+   * @return void
+   */
+  private function setTechnologies(Technologies $technologies)
+  {
+    $this->technologies = $technologies->toString();
+  }
+
+  /**
+   * Get the Company's vacancies
+   *
+   * @return Vacancies
+   */
+  public function vacancies()
+  {
+    return Vacancies::fromNative($this->vacancies);
+  }
+
+  /**
+   * Set the Company's Vacancies
+   *
+   * @param Vacancies $vacancies
+   * @return void
+   */
+  private function setVacancies(Vacancies $vacancies)
+  {
+    $this->vacancies = $vacancies->toString();
   }
 }

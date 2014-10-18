@@ -23,7 +23,7 @@ return array(
 
     'sqlite' => array(
       'driver' => 'sqlite',
-			'database' => 'local',
+			'database' => __DIR__ . '/../../database/local.sqlite',
       'prefix' => ''
     )
 

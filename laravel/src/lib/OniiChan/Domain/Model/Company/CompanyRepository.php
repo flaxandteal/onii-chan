@@ -44,15 +44,18 @@ interface CompanyRepository
   /**
    * Find all companies
    *
+   * @param integer $limit
    * @return array(Company)
    */
-  public function findAll();
+  public function findAll($limit = null);
 
   /**
    * Find companies whose title contains a search-string
    *
    * @param string $substring
+   * @param integer $limit
+   * @param integer $offset
    * @return array(Company)
    */
-  public function companiesByTitleSubstring($substring);
+  public function companiesByTitleSubstring($substring, $limit, $offset);
 }

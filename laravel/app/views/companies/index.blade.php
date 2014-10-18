@@ -1,5 +1,5 @@
 <ul>
 @foreach ($companies as $company)
-  <li>{{ $company->title() }} ({{ $company->yearStarted() }})</li>
+  <li><a href="javascript:display_company('{{ $company->id() }}')">{{ $company->title() }}</a></li>
 @endforeach
 </ul>

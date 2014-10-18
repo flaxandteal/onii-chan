@@ -18,15 +18,63 @@ class RegisterCompanyCommand implements Command
   private $yearStarted;
 
   /**
+   * @var string
+   */
+  private $url;
+
+  /**
+   * @var string
+   */
+  private $email;
+
+  /**
+   * @var string
+   */
+  private $location;
+
+  /**
+   * @var integer
+   */
+  private $size;
+
+  /**
+   * @var string
+   */
+  private $interestedIn;
+
+  /**
+   * @var string
+   */
+  private $experience;
+
+  /**
+   * @var string
+   */
+  private $technologies;
+
+  /**
+   * @var string
+   */
+  private $vacancies;
+
+  /**
    * Create a new RegisterCompanyCommand
    *
    * @param string $title
    * @param integer $yearStarted
    * @return RegisterCompanyCommand
    */
-  public function __construct($title, $yearStarted)
+  public function __construct($title, $yearStarted, $url, $email, $location, $size, $interestedIn, $experience, $technologies, $vacancies)
   {
     $this->title = $title;
     $this->yearStarted = $yearStarted;
+    $this->url = $url;
+    $this->email = $email;
+    $this->location = $location;
+    $this->size = $size;
+    $this->interestedIn = $interestedIn;
+    $this->experience = $experience;
+    $this->technologies = $technologies;
+    $this->vacancies = $vacancies;
   }
 }

@@ -94,10 +94,17 @@ class CompanyDoctrineORMRepository implements CompanyRepository
   /**
    * Find all companies
    *
+   * @param integer $limit
    * @return array(Company)
    */
-  public function findAll()
+  public function findAll($limit = null)
   {
+    if ($limit && is_integer($limit))
+    {
+      return $this->em->getRepository($this->class)
+        ->findBy(array(), null, $limit);
+    }
+
     return $this->em->getRepository($this->class)->findAll();
   }
 
@@ -105,14 +112,24 @@ class CompanyDoctrineORMRepository implements CompanyRepository
    * Find companies whose title contains a search-string
    *
    * @param string $substring
+   * @param integer $limit
+   * @param integer $offset
    * @return array(Company)
    */
-  public function companiesByTitleSubstring($substring)
+  public function companiesByTitleSubstring($substring, $limit = null, $offset = null)
   {
     $queryBuilder = $this->em->getRepository($this->class)->createQueryBuilder('c');
     $query = $queryBuilder
       ->where('c.title LIKE :substring')
       ->setParameter('substring', '%' . $substring . '%');
+
+    if ($limit && is_integer($limit))
+    {
+      $query = $query->setMaxResults($limit);
+
+      if ($offset && is_integer($offset))
+        $query = $query->setFirstResult($offset);
+    }
 
     return $query->getQuery()->getResult();
   }

@@ -10,10 +10,10 @@
     </div>
     <div class='company-link-bar'>
       <div class='company-url'>
-        www.flaxandteal.co.uk
+        {{ $company->url() }}
       </div>
       <div class='company-email'>
-        info@flaxandteal.co.uk
+        {{ $company->email() }}
       </div>
     </div>
   </div>
@@ -44,8 +44,8 @@
       </thead>
       <tbody>
         <tr class='cs-main-row'>
-          <td>Belfast</td>
-          <td>LTD < 5</td>
+          <td>{{ $company->location() }}</td>
+          <td>{{ $company->size() }}</td>
           <td>{{ $company->yearStarted() }}</td>
         </tr>
       </tbody>
@@ -56,10 +56,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan=3>Web dev, mathematics, education, open source advocacy.</td>
-        </tr>
-        <tr>
-          <td colspan=3 class='-mild-highlighted'>Joint collaborations; new clients</td>
+          <td colspan=3>{{ $company->interestedIn() }}</td>
         </tr>
       </tbody>
       <thead>
@@ -69,7 +66,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan=3>New Zealand video tutorials service</td>
+          <td colspan=3>{{ $company->experience() }}</td>
         </tr>
       </tbody>
       <thead>
@@ -79,7 +76,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan=3>Python, C/C++, PHP, Drupal, Laravel</td>
+          <td colspan=3>{{ $company->technologies() }}</td>
         </tr>
       </tbody>
       <thead>
@@ -89,10 +86,9 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan=3>Junior web developer (1 pos.)</td>
+          <td colspan=3>{{ $company->vacancies() }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
-

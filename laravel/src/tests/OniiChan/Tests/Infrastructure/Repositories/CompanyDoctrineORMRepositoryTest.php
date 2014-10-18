@@ -10,6 +10,14 @@ use OniiChan\Domain\Model\Company\Company;
 use OniiChan\Domain\Model\Company\CompanyId;
 use OniiChan\Domain\Model\Company\Title;
 use OniiChan\Domain\Model\Company\YearStarted;
+use OniiChan\Domain\Model\Company\Url;
+use OniiChan\Domain\Model\Company\Email;
+use OniiChan\Domain\Model\Company\Location;
+use OniiChan\Domain\Model\Company\Size;
+use OniiChan\Domain\Model\Company\InterestedIn;
+use OniiChan\Domain\Model\Company\Experience;
+use OniiChan\Domain\Model\Company\Technologies;
+use OniiChan\Domain\Model\Company\Vacancies;
 use OniiChan\Infrastructure\Repositories\CompanyDoctrineORMRepository;
 use OniiChan\Tests\Infrastructure\Repositories\Fixtures\CompanyFixtures;
 
@@ -76,9 +84,28 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
   {
     $id = CompanyId::generate();
     $title = new Title("Flax & Teal Limited");
-    $yearStarted = new YearStarted(2013);
+    $yearStarted  = new YearStarted(2013);
+    $url          = new Url("www.flaxandteal.co.uk");
+    $email        = new Email("info@flaxandteal.co.uk");
+    $location     = new Location("Belfast");
+    $size         = new Size(1);
+    $interestedIn = new InterestedIn("Web dev, mathematics, education, open source advocacy.");
+    $experience   = new Experience("New Zealand video tutorials service");
+    $technologies = new Technologies("Python, C/C++, PHP, Drupal, Laravel");
+    $vacancies    = new Vacancies("Junior web developer (1 pos.)");
 
-    $this->repository->add(Company::register($id, $title, $yearStarted));
+    $this->repository->add(Company::register($id,
+      $title,
+      $yearStarted,
+      $url,
+      $email,
+      $location,
+      $size,
+      $interestedIn,
+      $experience,
+      $technologies,
+      $vacancies
+    ));
 
     $this->em->clear();
 
@@ -87,6 +114,14 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
     $this->assertEquals($id, $company->id());
     $this->assertEquals($title, $company->title());
     $this->assertEquals($yearStarted, $company->yearStarted());
+    $this->assertEquals($url, $company->url());
+    $this->assertEquals($email, $company->email());
+    $this->assertEquals($location, $company->location());
+    $this->assertEquals($size, $company->size());
+    $this->assertEquals($interestedIn, $company->interestedIn());
+    $this->assertEquals($experience, $company->experience());
+    $this->assertEquals($technologies, $company->technologies());
+    $this->assertEquals($vacancies, $company->vacancies());
   }
 
   /** @test */
@@ -123,9 +158,24 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
   {
     $this->executor->execute($this->loader->getFixtures());
 
-    $companies = $this->repository->companiesByTitleSubstring("imited");
+    $companies = $this->repository->companiesByTitleSubstring("imited", FALSE, FALSE);
 
     $this->assertTrue(count($companies) == 3);
+    $this->assertInstanceOf("OniiChan\Domain\Model\Company\Company", $companies[0]);
+  }
+
+  /** @test */
+  public function should_offset_and_limit_companies_found_by_title_substring()
+  {
+    $this->executor->execute($this->loader->getFixtures());
+
+    $limit = 2;
+    $offset = 1;
+
+    $companies = $this->repository->companiesByTitleSubstring("imited", $limit, $offset);
+
+    $this->assertTrue(count($companies) == 2);
+    $this->assertTrue($companies[1]->title()->toString() == "Flax & Teal Limited");
     $this->assertInstanceOf("OniiChan\Domain\Model\Company\Company", $companies[0]);
   }
 }
