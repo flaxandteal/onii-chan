@@ -2,17 +2,22 @@
 
 use Doctrine\ORM\EntityManagerInterface;
 use OniiChan\Application\CommandBus;
+use OniiChan\Application\Company\CompanyPresenter;
 use OniiChan\Domain\Model\Company\CompanyRepository;
 use OniiChan\Domain\Model\Company\CompanyId;
+use OniiChan\Infrastructure\Services\PresenterService;
 
 class CompanyController extends Controller
 {
   protected $commandBus;
 
-  public function __construct(CommandBus $commandBus, CompanyRepository $companyRepository)
+  public function __construct(CommandBus $commandBus, CompanyRepository $companyRepository,
+    PresenterService $presenterService, CompanyPresenter $companyPresenter)
   {
     $this->commandBus = $commandBus;
     $this->companyRepository = $companyRepository;
+    $this->presenterService = $presenterService;
+    $this->companyPresenter = $companyPresenter;
   }
 
   public function index()
@@ -34,6 +39,8 @@ class CompanyController extends Controller
     $displayLimit = Config::get('onii.company_count_display_limit');
     if ($displayLimit)
       $companies = array_slice($companies, 0, $displayLimit);
+
+    $companies = $this->presenterService->collection($companies, $this->companyPresenter);
 
     $html = View::make('companies.index')->with('companies', $companies)->render();
 
@@ -61,6 +68,8 @@ class CompanyController extends Controller
     $uuid = CompanyId::fromString($id);
 
     $company = $this->companyRepository->companyOfId($uuid);
+
+    $company = $this->presenterService->model($company, $this->companyPresenter);
 
     return View::make('companies.show')->with('company', $company);
   }

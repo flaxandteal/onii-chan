@@ -32,6 +32,6 @@ abstract class AbstractPresenter
       return $this->{$key}();
     }
 
-    return $this->object->$key;
+    return $this->object->$key();
   }
 }
