@@ -20,7 +20,7 @@ class BlurbTest extends \PHPUnit_Framework_TestCase
     for ($i = 0 ; $i < 3000 / strlen($sample) ; $i++)
       $blurb .= $sample;
 
-    $blurb = new Blurb($sample);
+    $blurb = new Blurb($blurb);
   }
 
   /** @test */

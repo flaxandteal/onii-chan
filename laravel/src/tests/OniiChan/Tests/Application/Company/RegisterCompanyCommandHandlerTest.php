@@ -54,7 +54,7 @@ ENDBLURB;
     $this->registerCompanyCommand->shouldReceive('vacancies')->andReturn($vacancies)->once();
     $this->registerCompanyCommand->shouldReceive('blurb')->andReturn($blurb)->once();
     $this->registerCompanyService->shouldReceive('register')->with($title, $yearStarted, $url, $email, $location, $size, $interestedIn,
-      $experience, $technologies, $vacancies)->once();
+      $experience, $technologies, $vacancies, $blurb)->once();
 
     $commandHandler->handle($this->registerCompanyCommand);
   }

@@ -11,6 +11,7 @@ use OniiChan\Domain\Model\Company\InterestedIn;
 use OniiChan\Domain\Model\Company\Experience;
 use OniiChan\Domain\Model\Company\Technologies;
 use OniiChan\Domain\Model\Company\Vacancies;
+use OniiChan\Domain\Model\Company\Blurb;
 use OniiChan\Domain\Model\Company\TitleIsUnique;
 use OniiChan\Domain\Model\Company\CompanyRepository;
 use OniiChan\Domain\Model\ValueIsNotUniqueException;
@@ -52,10 +53,11 @@ class RegisterCompanyService
    * @param string $experience;
    * @param string $technologies;
    * @param string $vacancies;
+   * @param string $blurb;
    * @return void
    */
   public function register($title, $yearStarted, $url, $email, $location, $size,
-      $interestedIn, $experience, $technologies, $vacancies)
+      $interestedIn, $experience, $technologies, $vacancies, $blurb)
   {
     $title        = new Title($title);
     $yearStarted  = new YearStarted($yearStarted);
@@ -67,6 +69,7 @@ class RegisterCompanyService
     $experience   = new Experience($experience);
     $technologies = new Technologies($technologies);
     $vacancies    = new Vacancies($vacancies);
+    $blurb        = new Blurb($blurb);
 
     $this->checkTitleIsUnique($title);
 
@@ -83,7 +86,8 @@ class RegisterCompanyService
         $interestedIn,
         $experience,
         $technologies,
-        $vacancies
+        $vacancies,
+        $blurb
     );
     $this->companyRepository->add($company);
 

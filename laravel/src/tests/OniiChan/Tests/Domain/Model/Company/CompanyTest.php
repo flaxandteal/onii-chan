@@ -42,7 +42,7 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
     $this->experience   = new Experience("New Zealand video tutorials service");
     $this->technologies = new Technologies("Python, C/C++, PHP, Drupal, Laravel");
     $this->vacancies    = new Vacancies("Junior web developer (1 pos.)");
-    $this->blurb        =
+    $this->blurb        = new Blurb(
 <<<ENDBLURB
       Flax & Teal is a Belfast-based contracting company. In-house experience 
       in web development, engineering and mathematics. interested in 
@@ -50,7 +50,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
 
       The company is focused on developing European links with international 
       Commonwealth projects, and Northern Ireland internal collaboration.
-ENDBLURB;
+ENDBLURB
+    );
   }
 
   /** @test */

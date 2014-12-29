@@ -35,6 +35,7 @@ class RegisterCompanyCommandHandler implements Handler {
     $experience   = $command->experience();
     $technologies = $command->technologies();
     $vacancies    = $command->vacancies();
+    $blurb        = $command->blurb();
 
     $this->registerCompanyService->register(
       $title,
@@ -46,7 +47,8 @@ class RegisterCompanyCommandHandler implements Handler {
       $interestedIn,
       $experience,
       $technologies,
-      $vacancies
+      $vacancies,
+      $blurb
     );
   }
 }

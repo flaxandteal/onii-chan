@@ -5,6 +5,9 @@ use OniiChan\Domain\ValueObject;
 
 class Blurb implements ValueObject
 {
+  //FIXME: get this into config
+  private $max_blurb_length = 500;
+
   /**
    * @var string
    */
@@ -18,7 +21,8 @@ class Blurb implements ValueObject
    */
   public function __construct($value)
   {
-    Assertion::regex($value, '/^[\pL\pM\pN\pZ\pP]+$/u');
+    //Assertion::regex($value, '/^[\PC]+$/u');
+    Assertion::maxLength($value, $this->max_blurb_length);
 
     $this->value = $value;
   }
