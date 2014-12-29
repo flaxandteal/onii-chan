@@ -12,6 +12,7 @@ use OniiChan\Domain\Model\Company\InterestedIn;
 use OniiChan\Domain\Model\Company\Experience;
 use OniiChan\Domain\Model\Company\Technologies;
 use OniiChan\Domain\Model\Company\Vacancies;
+use OniiChan\Domain\Model\Company\Blurb;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 
@@ -66,6 +67,7 @@ class CompanyFixtures implements FixtureInterface
       $experience = new Experience($faker->text);
       $technologies = new Technologies($faker->text);
       $vacancies = new Vacancies($faker->text);
+      $blurb = new Blurb($faker->text);
 
       $company = Company::register(
         $id,
@@ -78,7 +80,8 @@ class CompanyFixtures implements FixtureInterface
         $interestedIn,
         $experience,
         $technologies,
-        $vacancies
+        $vacancies,
+        $blurb
       );
 
       $manager->persist($company);

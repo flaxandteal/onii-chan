@@ -7,6 +7,15 @@ class RegisterCompanyCommandTest extends \PHPUnit_Framework_TestCase
   /** @test */
   public function should_create_register_company_command()
   {
+    $blurb =
+<<<ENDBLURB
+      Flax & Teal is a Belfast-based contracting company. In-house experience 
+      in web development, engineering and mathematics. interested in 
+      collaborations oriented around numerical analysis or web solutions.
+
+      The company is focused on developing European links with international 
+      Commonwealth projects, and Northern Ireland internal collaboration.
+ENDBLURB;
     $command = new RegisterCompanyCommand(
       'Flax & Teal Limited',
       2013,
@@ -17,7 +26,8 @@ class RegisterCompanyCommandTest extends \PHPUnit_Framework_TestCase
       'Web dev, mathematics, education, open source advocacy.',
       'New Zealand video tutorials service',
       'Python, C/C++, PHP, Drupal, Laravel',
-      'Junior web developer (1 pos.)'
+      'Junior web developer (1 pos.)',
+      $blurb
     );
 
     $this->assertEquals('Flax & Teal Limited', $command->title);
@@ -30,5 +40,6 @@ class RegisterCompanyCommandTest extends \PHPUnit_Framework_TestCase
     $this->assertEquals('New Zealand video tutorials service', $command->experience);
     $this->assertEquals('Python, C/C++, PHP, Drupal, Laravel', $command->technologies);
     $this->assertEquals('Junior web developer (1 pos.)', $command->vacancies);
+    $this->assertEquals($blurb, $command->blurb);
   }
 }

@@ -47,6 +47,7 @@ class RegisterCompanyServiceTest extends \PHPUnit_Framework_TestCase
     $experience = "New Zealand video tutorials service";
     $technologies = "Python, C/C++, PHP, Drupal, Laravel";
     $vacancies = "Junior web developer (1 pos.)";
+    $blurb = $this->createBlurb();
 
     $this->repository->shouldReceive('companyOfTitle')->andReturn(true);
 
@@ -60,7 +61,8 @@ class RegisterCompanyServiceTest extends \PHPUnit_Framework_TestCase
         $interestedIn,
         $experience,
         $technologies,
-        $vacancies
+        $vacancies,
+        $blurb
     );
   }
 
@@ -81,6 +83,7 @@ class RegisterCompanyServiceTest extends \PHPUnit_Framework_TestCase
     $experience = "New Zealand video tutorials service";
     $technologies = "Python, C/C++, PHP, Drupal, Laravel";
     $vacancies = "Junior web developer (1 pos.)";
+    $blurb = $this->createBlurb();
 
     $this->company->shouldReceive('register')->andReturn($this->company);
 
@@ -94,8 +97,22 @@ class RegisterCompanyServiceTest extends \PHPUnit_Framework_TestCase
       $interestedIn,
       $experience,
       $technologies,
-      $vacancies
+      $vacancies,
+      $blurb
     );
     $this->assertInstanceOf('OniiChan\Domain\Model\Company\Company', $company);
+  }
+
+  private function createBlurb()
+  {
+    return
+<<<ENDBLURB
+      Flax & Teal is a Belfast-based contracting company. In-house experience 
+      in web development, engineering and mathematics. interested in 
+      collaborations oriented around numerical analysis or web solutions.
+
+      The company is focused on developing European links with international 
+      Commonwealth projects, and Northern Ireland internal collaboration.
+ENDBLURB;
   }
 }

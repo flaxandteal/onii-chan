@@ -12,6 +12,7 @@ use OniiChan\Domain\Model\Company\InterestedIn;
 use OniiChan\Domain\Model\Company\Experience;
 use OniiChan\Domain\Model\Company\Technologies;
 use OniiChan\Domain\Model\Company\Vacancies;
+use OniiChan\Domain\Model\Company\Blurb;
 use OniiChan\Domain\Model\Company\CompanyRepository;
 
 class CompanyTableSeeder extends Seeder {
@@ -46,7 +47,8 @@ class CompanyTableSeeder extends Seeder {
         "interestedIn" => $faker->text(),
         "experience" => $faker->text(),
         "technologies" => $faker->text(),
-        "vacancies" => $faker->text()
+        "vacancies" => $faker->text(),
+        "blurb" => $faker->text()
       );
 
     $samples[rand(0, $entries)] = array(
@@ -59,7 +61,16 @@ class CompanyTableSeeder extends Seeder {
       "interestedIn" => "Web dev, mathematics, education, open source advocacy.",
       "experience" => "New Zealand video tutorials service",
       "technologies" => "Python, C/C++, PHP, Drupal, Laravel",
-      "vacancies" => "Junior web developer (1 pos.)"
+      "vacancies" => "Junior web developer (1 pos.)",
+      "blurb" =>
+<<<ENDBLURB
+      Flax & Teal is a Belfast-based contracting company. In-house experience␣
+      in web development, engineering and mathematics. interested in␣
+      collaborations oriented around numerical analysis or web solutions.
+
+      The company is focused on developing European links with international␣
+      Commonwealth projects, and Northern Ireland internal collaboration.
+ENDBLURB
     );
 
     $preferred = array(
@@ -112,6 +123,7 @@ class CompanyTableSeeder extends Seeder {
       $experience   = new Experience($varlist["experience"]);
       $technologies = new Technologies($varlist["technologies"]);
       $vacancies    = new Vacancies($varlist["vacancies"]);
+      $blurb        = new Blurb($varlist["blurb"]);
 
       $this->companyRepository->add(Company::register(
         $id,
@@ -124,7 +136,8 @@ class CompanyTableSeeder extends Seeder {
         $interestedIn,
         $experience,
         $technologies,
-        $vacancies
+        $vacancies,
+        $blurb
       ));
     }
   }

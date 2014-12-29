@@ -58,13 +58,20 @@ class RegisterCompanyCommand implements Command
   private $vacancies;
 
   /**
+   * @var string
+   */
+  private $blurb;
+
+  /**
    * Create a new RegisterCompanyCommand
    *
    * @param string $title
    * @param integer $yearStarted
    * @return RegisterCompanyCommand
    */
-  public function __construct($title, $yearStarted, $url, $email, $location, $size, $interestedIn, $experience, $technologies, $vacancies)
+  public function __construct($title, $yearStarted, $url,
+    $email, $location, $size, $interestedIn, $experience,
+    $technologies, $vacancies, $blurb)
   {
     $this->title = $title;
     $this->yearStarted = $yearStarted;
@@ -76,5 +83,6 @@ class RegisterCompanyCommand implements Command
     $this->experience = $experience;
     $this->technologies = $technologies;
     $this->vacancies = $vacancies;
+    $this->blurb = $blurb;
   }
 }

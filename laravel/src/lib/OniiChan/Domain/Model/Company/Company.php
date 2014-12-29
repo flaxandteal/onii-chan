@@ -77,6 +77,11 @@ class Company implements AggregateRoot
   private $vacancies;
 
   /**
+   * @ORM\Column(type="text")
+   */
+  private $blurb;
+
+  /**
    * Create a new company
    *
    * @param CompanyId $companyId
@@ -90,11 +95,13 @@ class Company implements AggregateRoot
    * @param Experience $experience
    * @param Technologies $technologies
    * @param Vacancies $vacancies
+   * @param Blurb $blurb
    * @return void
    */
   private function __construct(CompanyId $companyId, Title $title, YearStarted $yearStarted,
     Url $url, Email $email, Location $location, Size $size, InterestedIn $interestedIn,
-    Experience $experience, Technologies $technologies, Vacancies $vacancies)
+    Experience $experience, Technologies $technologies, Vacancies $vacancies,
+    Blurb $blurb)
   {
 
     $this->setId($companyId);
@@ -108,6 +115,7 @@ class Company implements AggregateRoot
     $this->setExperience($experience);
     $this->setTechnologies($technologies);
     $this->setVacancies($vacancies);
+    $this->setBlurb($blurb);
 
     $this->record(new CompanyWasRegistered($this));
   }
@@ -122,11 +130,13 @@ class Company implements AggregateRoot
    */
   public static function register(CompanyId $companyId, Title $title, YearStarted $yearStarted,
     Url $url, Email $email, Location $location, Size $size, InterestedIn $interestedIn,
-    Experience $experience, Technologies $technologies, Vacancies $vacancies)
+    Experience $experience, Technologies $technologies, Vacancies $vacancies,
+    Blurb $blurb)
   {
     $company = new Company($companyId, $title, $yearStarted,
                            $url, $email, $location, $size, $interestedIn, 
-                           $experience, $technologies, $vacancies);
+                           $experience, $technologies, $vacancies,
+                           $blurb);
 
     return $company;
   }
@@ -373,5 +383,26 @@ class Company implements AggregateRoot
   private function setVacancies(Vacancies $vacancies)
   {
     $this->vacancies = $vacancies->toString();
+  }
+
+  /**
+   * Get the Company's blurb
+   *
+   * @return Blurb
+   */
+  public function blurb()
+  {
+    return Blurb::fromNative($this->blurb);
+  }
+
+  /**
+   * Set the Company's blurb
+   *
+   * @param Blurb $blurb
+   * @return void
+   */
+  private function setBlurb(Blurb $blurb)
+  {
+    $this->blurb = $blurb->toString();
   }
 }

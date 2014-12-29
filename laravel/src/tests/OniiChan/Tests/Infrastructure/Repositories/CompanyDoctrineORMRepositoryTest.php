@@ -18,6 +18,7 @@ use OniiChan\Domain\Model\Company\InterestedIn;
 use OniiChan\Domain\Model\Company\Experience;
 use OniiChan\Domain\Model\Company\Technologies;
 use OniiChan\Domain\Model\Company\Vacancies;
+use OniiChan\Domain\Model\Company\Blurb;
 use OniiChan\Infrastructure\Repositories\CompanyDoctrineORMRepository;
 use OniiChan\Tests\Infrastructure\Repositories\Fixtures\CompanyFixtures;
 
@@ -93,6 +94,16 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
     $experience   = new Experience("New Zealand video tutorials service");
     $technologies = new Technologies("Python, C/C++, PHP, Drupal, Laravel");
     $vacancies    = new Vacancies("Junior web developer (1 pos.)");
+    $blurb        = new Blurb(
+<<<ENDBLURB
+      Flax & Teal is a Belfast-based contracting company. In-house experience 
+      in web development, engineering and mathematics. interested in 
+      collaborations oriented around numerical analysis or web solutions.
+
+      The company is focused on developing European links with international 
+      Commonwealth projects, and Northern Ireland internal collaboration.
+ENDBLURB
+    );
 
     $this->repository->add(Company::register($id,
       $title,
@@ -104,7 +115,8 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
       $interestedIn,
       $experience,
       $technologies,
-      $vacancies
+      $vacancies,
+      $blurb
     ));
 
     $this->em->clear();
@@ -122,6 +134,7 @@ class CompanyDoctrineORMRepositoryTest extends \TestCase
     $this->assertEquals($experience, $company->experience());
     $this->assertEquals($technologies, $company->technologies());
     $this->assertEquals($vacancies, $company->vacancies());
+    $this->assertEquals($blurb, $company->blurb());
   }
 
   /** @test */

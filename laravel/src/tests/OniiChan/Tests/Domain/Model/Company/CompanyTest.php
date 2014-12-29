@@ -13,6 +13,7 @@ use OniiChan\Domain\Model\Company\InterestedIn;
 use OniiChan\Domain\Model\Company\Experience;
 use OniiChan\Domain\Model\Company\Technologies;
 use OniiChan\Domain\Model\Company\Vacancies;
+use OniiChan\Domain\Model\Company\Blurb;
 
 class CompanyTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,6 +22,9 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
 
   /** @var Title */
   private $title;
+
+  /** @var Blurb */
+  private $blurb;
 
   /** @var YearStarted */
   private $yearStarted;
@@ -38,6 +42,15 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
     $this->experience   = new Experience("New Zealand video tutorials service");
     $this->technologies = new Technologies("Python, C/C++, PHP, Drupal, Laravel");
     $this->vacancies    = new Vacancies("Junior web developer (1 pos.)");
+    $this->blurb        =
+<<<ENDBLURB
+      Flax & Teal is a Belfast-based contracting company. In-house experience 
+      in web development, engineering and mathematics. interested in 
+      collaborations oriented around numerical analysis or web solutions.
+
+      The company is focused on developing European links with international 
+      Commonwealth projects, and Northern Ireland internal collaboration.
+ENDBLURB;
   }
 
   /** @test */
@@ -57,7 +70,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -78,7 +92,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -98,7 +113,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -118,7 +134,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -138,7 +155,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -158,7 +176,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -178,7 +197,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -198,7 +218,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       null,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -218,7 +239,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       null,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -238,7 +260,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       null,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
   }
 
@@ -258,6 +281,27 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
+      null,
+      $this->blurb
+    );
+  }
+
+  public function should_require_blurb()
+  {
+    $this->setExpectedException('Exception');
+
+    $company = Company::register(
+      $this->companyId,
+      $this->title,
+      $this->yearStarted,
+      $this->url,
+      $this->email,
+      $this->location,
+      $this->size,
+      $this->interestedIn,
+      $this->experience,
+      $this->technologies,
+      $this->vacancies,
       null
     );
   }
@@ -276,7 +320,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
 
     $this->assertInstanceOf('OniiChan\Domain\Model\Company\Company', $company);
@@ -291,6 +336,7 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
     $this->assertInstanceOf('OniiChan\Domain\Model\Company\Experience', $company->experience());
     $this->assertInstanceOf('OniiChan\Domain\Model\Company\Technologies', $company->technologies());
     $this->assertInstanceOf('OniiChan\Domain\Model\Company\Vacancies', $company->vacancies());
+    $this->assertInstanceOf('OniiChan\Domain\Model\Company\Blurb', $company->blurb());
     $this->assertEquals(1, count($company->release()));
   }
 
@@ -308,7 +354,8 @@ class CompanyTest extends \PHPUnit_Framework_TestCase
       $this->interestedIn,
       $this->experience,
       $this->technologies,
-      $this->vacancies
+      $this->vacancies,
+      $this->blurb
     );
 
     $company->updateTitle(new Title("Flax & Teal Unlimited"));

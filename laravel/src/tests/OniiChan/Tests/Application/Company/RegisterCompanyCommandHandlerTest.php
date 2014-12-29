@@ -32,6 +32,15 @@ class RegisterCompanyCommandHandlerTest extends \PHPUnit_Framework_TestCase
     $experience = "New Zealand video tutorials service";
     $technologies = "Python, C/C++, PHP, Drupal, Laravel";
     $vacancies = "Junior web developer (1 pos.)";
+    $blurb =
+<<<ENDBLURB
+      Flax & Teal is a Belfast-based contracting company. In-house experience 
+      in web development, engineering and mathematics. interested in 
+      collaborations oriented around numerical analysis or web solutions.
+
+      The company is focused on developing European links with international 
+      Commonwealth projects, and Northern Ireland internal collaboration.
+ENDBLURB;
 
     $this->registerCompanyCommand->shouldReceive('title')->andReturn($title)->once();
     $this->registerCompanyCommand->shouldReceive('yearStarted')->andReturn($yearStarted)->once(); // WHY NO ERROR IF NOT CALLED?
@@ -43,6 +52,7 @@ class RegisterCompanyCommandHandlerTest extends \PHPUnit_Framework_TestCase
     $this->registerCompanyCommand->shouldReceive('experience')->andReturn($experience)->once();
     $this->registerCompanyCommand->shouldReceive('technologies')->andReturn($technologies)->once();
     $this->registerCompanyCommand->shouldReceive('vacancies')->andReturn($vacancies)->once();
+    $this->registerCompanyCommand->shouldReceive('blurb')->andReturn($blurb)->once();
     $this->registerCompanyService->shouldReceive('register')->with($title, $yearStarted, $url, $email, $location, $size, $interestedIn,
       $experience, $technologies, $vacancies)->once();
 
