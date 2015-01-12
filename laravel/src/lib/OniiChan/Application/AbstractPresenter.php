@@ -25,13 +25,13 @@ abstract class AbstractPresenter
    *
    * @param string $key
    */
-  public function __get($key)
+  public function __call($key, $arguments)
   {
     if (method_exists($this, $key))
     {
-      return $this->{$key}();
+      return call_user_func_array(array($this, $key), $arguments);
     }
 
-    return $this->object->$key();
+    return call_user_func_array(array($this->object, $key), $arguments);
   }
 }

@@ -2,7 +2,7 @@
   <div class='company-header'>
     <div class='company-header-line'>
       <div class='company-title'>
-        {{ $company->title }}
+        {{ $company->title() }}
       </div>
       <div class='company-endorsements'>
         [endorsements: 4]
@@ -10,10 +10,10 @@
     </div>
     <div class='company-link-bar'>
       <div class='company-url'>
-        {{ $company->url }}
+        {{ $company->url() }}
       </div>
       <div class='company-email'>
-        {{ $company->email }}
+        {{ $company->email() }}
       </div>
     </div>
   </div>
@@ -44,9 +44,9 @@
       </thead>
       <tbody>
         <tr class='cs-main-row'>
-          <td>{{ $company->location }}</td>
-          <td>{{ $company->size }}</td>
-          <td>{{ $company->yearStarted }}</td>
+          <td>{{ $company->location() }}</td>
+          <td>{{ $company->size() }}</td>
+          <td>{{ $company->yearStarted() }}</td>
         </tr>
       </tbody>
       <thead>
@@ -56,7 +56,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan=3>{{ $company->interestedIn }}</td>
+          <td colspan=3>{{ $company->interestedIn() }}</td>
         </tr>
       </tbody>
       <thead>
@@ -66,7 +66,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan=3>{{ $company->experience }}</td>
+          <td colspan=3>{{ $company->experience() }}</td>
         </tr>
       </tbody>
       <thead>
@@ -76,7 +76,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan=3>{{ $company->technologies }}</td>
+          <td colspan=3>{{ $company->technologies() }}</td>
         </tr>
       </tbody>
       <thead>
@@ -86,7 +86,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan=3>{{ $company->vacancies }}</td>
+          <td colspan=3>{{ $company->vacancies() }}</td>
         </tr>
       </tbody>
     </table>
