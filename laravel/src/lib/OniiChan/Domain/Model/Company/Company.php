@@ -82,6 +82,20 @@ class Company implements AggregateRoot
   private $blurb;
 
   /**
+   * @ORM\ManyToMany(targetEntity="Company", mappedBy="endorsing")
+   */
+  private $endorsers;
+
+  /**
+   * @ORM\ManyToMany(targetEntity="Company", inversedBy="endorsers")
+   * @ORM\JoinTable(name="endorsers",
+   *    joinColumns={@ORM\JoinColumn(name="company_id", referencedColumnName="id")},
+   *    inverseJoinColumns={@ORM\JoinColumn(name="endorsing_user_id", referencedColumnName="id")}
+   * )
+   */
+  private $endorsing;
+
+  /**
    * Create a new company
    *
    * @param CompanyId $companyId
@@ -116,6 +130,9 @@ class Company implements AggregateRoot
     $this->setTechnologies($technologies);
     $this->setVacancies($vacancies);
     $this->setBlurb($blurb);
+
+    $this->endorsers = new ArrayCollection;
+    $this->endorsing = new ArrayCollection;
 
     $this->record(new CompanyWasRegistered($this));
   }
@@ -404,5 +421,76 @@ class Company implements AggregateRoot
   private function setBlurb(Blurb $blurb)
   {
     $this->blurb = $blurb->toString();
+  }
+
+  /**
+   * Endorse another Company
+   *
+   * @param Company $company
+   * @return void
+   */
+  public function endorse(Company $company)
+  {
+    if (!$this->endorsing->contains($company))
+    {
+      $this->endorsing[] = $company;
+
+      $company->endorsedBy($this);
+    }
+  }
+
+  /**
+   * Return the Companies that this Company has endorsed
+   *
+   * @return ArrayCollection
+   */
+  public function endorsing()
+  {
+    return $this->endorsing;
+  }
+
+  /**
+   * Return the Companies endorsing this Company
+   *
+   * @return ArrayCollection
+   */
+  public function endorsers()
+  {
+    return $this->endorsers;
+  }
+
+  /**
+   * Acknowledge endorsement by another Company
+   *
+   * @param Company $company
+   * @return void
+   */
+  private function endorsedBy(Company $company)
+  {
+    $this->endorsers[] = $company;
+  }
+
+  /**
+   * Remove endorsement of another Company
+   *
+   * @param Company $company
+   * @return void
+   */
+  public function unendorse(Company $company)
+  {
+    $this->endorsing->removeElement($company);
+
+    $company->unendorsedBy($this);
+  }
+
+  /**
+   * Acknowledge removal of endorsement by another Company
+   *
+   * @param Company $company
+   * @return void
+   */
+  public function unendorsedBy(Company $company)
+  {
+    $this->endorsers->removeElement($company);
   }
 }

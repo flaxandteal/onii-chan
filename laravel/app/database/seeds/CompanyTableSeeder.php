@@ -110,6 +110,7 @@ ENDBLURB
         $samples[$i][$k] = $v;
     }
 
+    $companies = [];
     foreach ($samples as $varlist) {
       $id = CompanyId::generate();
 
@@ -125,7 +126,7 @@ ENDBLURB
       $vacancies    = new Vacancies($varlist["vacancies"]);
       $blurb        = new Blurb($varlist["blurb"]);
 
-      $this->companyRepository->add(Company::register(
+      $company = Company::register(
         $id,
         $title,
         $yearStarted,
@@ -138,8 +139,23 @@ ENDBLURB
         $technologies,
         $vacancies,
         $blurb
-      ));
+      );
+
+      $this->companyRepository->add($company);
+      $companies[] = $company;
     }
+
+    $total_endorsements = $entries;
+    for ($i = 0 ; $i < $total_endorsements ; $i++)
+    {
+      $companyA = $companies[rand(0, $entries - 1)];
+      $companyB = $companies[rand(0, $entries - 1)];
+      if ($companyA != $companyB)
+        $companyA->endorse($companyB);
+    }
+
+    for ($i = 0 ; $i < $entries ; $i++)
+      $this->companyRepository->update($companies[$i]);
   }
 
 }

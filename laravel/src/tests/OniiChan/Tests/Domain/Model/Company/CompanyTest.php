@@ -364,4 +364,61 @@ ENDBLURB
     $this->assertEquals("Flax & Teal Unlimited", $company->title()->toString());
     $this->count(1, count($company->release()));
   }
+
+  /** @test */
+  public function should_endorse_and_have_endorsers()
+  {
+    $companies = [];
+
+    for ($i = 0; $i < 4 ; $i++)
+      $company[] = Company::register(
+        new CompanyId(Uuid::uuid4()),
+        new Title('Company' . $i),
+        $this->yearStarted,
+        $this->url,
+        $this->email,
+        $this->location,
+        $this->size,
+        $this->interestedIn,
+        $this->experience,
+        $this->technologies,
+        $this->vacancies,
+        $this->blurb
+      );
+
+    $company[1]->endorse($company[0]);
+    $company[2]->endorse($company[0]);
+    $company[2]->endorse($company[1]);
+    $company[3]->endorse($company[0]);
+    $company[3]->endorse($company[1]);
+    $company[3]->endorse($company[2]);
+
+    $this->assertEquals(0, $company[0]->endorsing()->count());
+    $this->assertEquals(1, $company[1]->endorsing()->count());
+    $this->assertEquals(2, $company[2]->endorsing()->count());
+    $this->assertEquals(3, $company[3]->endorsing()->count());
+
+    $this->assertEquals(3, $company[0]->endorsers()->count());
+    $this->assertEquals(2, $company[1]->endorsers()->count());
+    $this->assertEquals(1, $company[2]->endorsers()->count());
+    $this->assertEquals(0, $company[3]->endorsers()->count());
+
+    $company[3]->endorse($company[2]);
+
+    $this->assertEquals(1, $company[2]->endorsers()->count());
+    $this->assertEquals(3, $company[3]->endorsing()->count());
+
+    $company[3]->unendorse($company[2]);
+
+    $this->assertEquals(0, $company[2]->endorsers()->count());
+    $this->assertEquals(2, $company[3]->endorsing()->count());
+
+    $company[2]->unendorse($company[3]);
+    $company[3]->unendorse($company[2]);
+
+    $this->assertEquals(0, $company[3]->endorsers()->count());
+    $this->assertEquals(2, $company[2]->endorsing()->count());
+    $this->assertEquals(0, $company[2]->endorsers()->count());
+    $this->assertEquals(2, $company[3]->endorsing()->count());
+  }
 }

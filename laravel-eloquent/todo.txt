@@ -1,1 +1,0 @@
-Look at http://code.tutsplus.com/tutorials/testing-like-a-boss-in-laravel-models--net-30087 for caching example

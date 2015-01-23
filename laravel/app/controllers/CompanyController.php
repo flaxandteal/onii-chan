@@ -2,10 +2,10 @@
 
 use Doctrine\ORM\EntityManagerInterface;
 use OniiChan\Application\CommandBus;
-use OniiChan\Application\Company\CompanyPresenter;
 use OniiChan\Domain\Model\Company\CompanyRepository;
 use OniiChan\Domain\Model\Company\CompanyId;
-use OniiChan\Infrastructure\Services\PresenterService;
+use OniiChan\Presentation\Company\CompanyPresenter;
+use OniiChan\Presentation\Services\PresenterService;
 
 class CompanyController extends Controller
 {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Laravel PHP Framework</title>
+	<title>OpenNI Index :: Open source business listings for Northern Ireland</title>
   <link href='http://fonts.googleapis.com/css?family=Quattrocento+Sans' rel='stylesheet' type='text/css'>
   {{ HTML::style('css/chunk-five.css') }}
   {{ HTML::style('css/league-gothic.css') }}
