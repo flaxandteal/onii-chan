@@ -9,6 +9,7 @@
   {{ HTML::style('css/main.css') }}
   {{ HTML::style('css/top-menu.css') }}
   {{ HTML::style('css/search-banner.css') }}
+  {{ HTML::style('css/filters.css') }}
   {{ HTML::style('css/content.css') }}
   {{ HTML::style('css/individual-company.css') }}
   {{ HTML::style('css/listings.css') }}
@@ -18,6 +19,96 @@
 </head>
 <body>
 <div id='background-container'>
+</div>
+<div class='filter-menu' id='filters-left'>
+  <div id='filter-sections'>
+    <h1>&rarr;sections</h1>
+    <ul>
+      <li class='plus-1'>--all--</li>
+      <li class='plus-2'>App Development</li>
+      <li class='plus-3'>Arts &amp; Humanities</li>
+      <li class='selected plus-4'>Enterprise Solns</li>
+      <li class='plus-5'>Statistics &amp; Econ.</li>
+      <li class='plus-4'>Science, Eng. &amp; Tech</li>
+      <li class='plus-3'>Support Services</li>
+      <li class='plus-2'>Web Technologies</li>
+    </ul>
+  </div>
+  <div id='filter-filters'>
+    <h1>&rarr;filters</h1>
+    <div id='filter-endorsements'>
+      <label>Endorsements</label>
+      <table>
+        <tr>
+          <td>&gt;0</td><td class='selected'>&gt;1</td><td>&gt;2</td>
+        </tr>
+      </table>
+    </div>
+    <div id='filter-structure'>
+      <label>Structure</label>
+      <table>
+        <tr>
+          <td>Sole</td><td>Ltd.</td><td>Ltd.&gt;10</td>
+        </tr>
+      </table>
+    </div>
+    <div id='filter-structure'>
+      <label>Listing Age</label>
+      <table>
+        <tr>
+          <td class="selected">Include recent additions</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class='filter-menu' id='filters-right'>
+  <div id='filter-tags'>
+    <h1>tags&larr;</h1>
+    <div id='tag-search-box'>
+      <input type='text' name='tag-search-box-input'/><p><strong>Tag</strong> Search...</p>
+    </div>
+    <ul>
+      <li class='selected'>Python</li>
+      <li class='selected'>C++</li>
+      <li>PHP</li>
+      <li>Webdev</li>
+      <li>Laravel</li>
+      <li>New Zealand</li>
+    </ul>
+    <script src="js/tagcanvas.js" type="text/javascript"></script>
+    <div id='filter-tag-canvas-1'>
+      <div id="myCanvasContainer">
+         <canvas width="150" height="150" id="myCanvas">
+             <p>This browser does not support the canvas element</p>
+             <ul>
+                <li><a style="font-size: 30px" href="/">Java</a></li>
+                <li><a style="font-size: 30px" href="/">LibreOffice</a></li>
+                <li><a style="font-size: 30px" href="/">Linux</a></li>
+                <li><a style="font-size: 20px" href="/">ASP</a></li>
+                <li><a style="font-size: 30px" href="/">Email</a></li>
+                <li><a style="font-size: 20px" href="/">OpenOffice</a></li>
+             </ul>
+         </canvas>
+      </div>
+    </div>
+    <div id='filter-tag-canvas-2'>
+      <div id="myCanvasContainer2">
+         <canvas width="150" height="150" id="myCanvas2">
+             <p>This browser does not support the canvas element</p>
+             <ul>
+                <li><a style="font-size: 40px" href="/">Fortran</a></li>
+                <li><a style="font-size: 30px" href="/">Ruby</a></li>
+                <li><a style="font-size: 30px" href="/">VPS</a></li>
+                <li><a style="font-size: 50px" href="/">JS</a></li>
+                <li><a style="font-size: 20px" href="/">Sysadmin</a></li>
+                <li><a style="font-size: 30px" href="/">Joomla</a></li>
+                <li><a style="font-size: 20px" href="/">MySQL</a></li>
+             </ul>
+         </canvas>
+      </div>
+    </div>
+  </div>
 </div>
 <div id='page-container'>
   <div id='top-menu'>

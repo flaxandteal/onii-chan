@@ -80,4 +80,14 @@ $(function() {
   var form = $('#search-banner-textbox-real form');
   var token = form.find('input[name=_token]').val();
   update_listings(null, token);
+
+  window.onload = function() {
+        try {
+          TagCanvas.Start('myCanvas', '', { weight: true, textFont: 'League Gothic', textColour: 'white' });
+          TagCanvas.Start('myCanvas2', '', { weight: true, textFont: 'League Gothic', textColour: 'white' });
+        } catch(e) {
+                // something went wrong, hide the canvas container
+                document.getElementById('myCanvasContainer').style.display = 'none';
+        }
+  };
 });

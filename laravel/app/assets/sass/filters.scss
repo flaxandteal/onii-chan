@@ -1,0 +1,140 @@
+$reference: 1;
+$filter-colour: rgba(255, 255, 255, 1);
+$filter-text-colour: rgba(100, 130, 180, 1), rgba(110, 140, 180, 1), rgba(120, 150, 180, 1), rgba(140, 160, 180, 1), rgba(150, 170, 180, 1);
+$filter-highlighted-colour: rgba(255, 128, 128, 1);
+$filter-highlighted-colour-alt: rgba(255, 115, 75, 1);
+$filter-lowlighted-colour: rgba(128, 255, 128, 1);
+
+.filter-menu {
+	top: 25%;
+	bottom: 25%;
+	margin: auto 0 auto 0;
+	height: 450px / $reference;
+	background: rgba(20, 40, 60, 0.8);
+	width: 160px / $reference;
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+	position: fixed;
+	font-family: 'League Gothic';
+	font-weight: normal;
+	text-transform: uppercase;
+	color: $filter-colour;
+
+	h1 {
+		display: inline;
+		font-size: 350%;
+		padding-left: 5px / $reference;
+	}
+
+	#filter-tags {
+		text-transform: none;
+
+		ul {
+			font-size: 170%;
+			padding-left: 5px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+
+			li {
+				display: inline-block;
+				background: rgba(255, 255, 255, 0.1);
+				padding-right: 3px;
+				color: $filter-lowlighted-colour;
+
+				&.selected {
+					color: $filter-highlighted-colour;
+				}
+			}
+		}
+		#tag-search-box {
+			z-index: 50;
+			position: relative;
+			height: 40px;
+			width: 150px;
+			font-family: League Gothic;
+
+			input[type=text] {
+				position: absolute;
+			  border: none;
+			  border-left: 3px rgb(147, 172, 157) solid;
+			  border-bottom: 3px rgb(147, 172, 157) solid;
+			  box-shadow: 0px 0px 5px rgba(128, 128, 128, 0.5);
+			  border-radius: 6px;
+			  /*background-color: rgba(170, 189, 245, 0.6);*/
+			  color: white;
+			  background: rgba(147, 172, 157, 0.5);
+			  height: 20px;
+			  width: 140px;
+			  font-size: 15px;
+			  margin-left: 10px;
+			  top: 0px;
+			}
+			
+			p strong {
+			  color: rgba(255, 255, 255, 0.3);
+			  font-weight: normal;
+			}
+			
+			p {
+			  position: absolute;
+			  bottom: 3px;
+			  right: 0px;
+			  text-transform: uppercase;
+			  font-size: 120%;
+			  color: rgba(255, 255, 255, 0.7);
+			}
+		}
+	}
+
+	#filter-filters {
+		div {
+			font-size: 130%;
+		}
+		table {
+			width: 100%;
+			td {
+				background-color: nth($filter-text-colour, 1);
+				&.selected {
+					background-color: $filter-highlighted-colour;
+				}
+			}
+		}
+	}
+
+	#filter-sections {
+		ul {
+			font-size: 150%;
+			margin-top: 0px;
+			list-style: none;
+			padding-left: 10px;
+			background-color: rgba(255, 255, 255, 1);
+
+			li {
+				display: table;
+				@for $i from 1 through 5 {
+					&.plus-#{$i} {
+						color: nth($filter-text-colour, $i);
+					}
+				}
+
+				&.selected {
+					background-color: $filter-highlighted-colour;
+					color: white;
+					width: 100%;
+					font-size: 135%;
+					padding-top: 3px / $reference;
+					padding-bottom: 3px / $reference;
+				}
+			}
+		}
+	}
+}
+
+#filters-left {
+	float: left;
+	left: 0%;
+}
+
+#filters-right {
+	float: right;
+	right: 0%;
+}
